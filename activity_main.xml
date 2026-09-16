@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#0F0F0F">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🛡️ VulnFusion Diamond v8.0"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#00FF88"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="مصنع 7 روبوتات - لا يطيع إلا مالكه"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnBuildFactory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🏭 شغل مصنع 7 روبوتات"
+        android:backgroundTint="#00FF88"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btnPersonalGuard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🛡️ الحارس الشخصي - 14 يوم حماية"
+        android:backgroundTint="#FF4444"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btnInspector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="👁️ المفتش المصلح - افحص الروبوتات"
+        android:backgroundTint="#4488FF"
+        android:layout_marginBottom="16dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tvLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="سجل الروبوتات:
+..."
+            android:textColor="#CCCCCC"
+            android:fontFamily="monospace"/>
+    </ScrollView>
+</LinearLayout>

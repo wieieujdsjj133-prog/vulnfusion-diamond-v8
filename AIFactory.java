@@ -4,26 +4,32 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AIFactory {
-    // قائمة الروبوتات السبعة
-    List<Robot> robots = Arrays.asList(
-        new CoderRobot(),      // 1. المبرمج
-        new ReviewerRobot(),   // 2. المدقق
-        new SecurityRobot(),   // 3. حارس الأمن - 18 أداة
-        new BuilderRobot(),    // 4. البناء
-        new SupervisorRobot(), // 5. المشرف العام
-        new GuardianPersonalRobot("owner"), // 6. الحارس الشخصي
-        new InspectorRobot()   // 7. المفتش المصلح
-    );
+    private List<Robot> robots;
+
+    public AIFactory() {
+        robots = Arrays.asList(
+            new CoderRobot(),
+            new CheckerRobot(),
+            new SecurityRobot(),
+            new BuilderRobot(),
+            new SupervisorRobot(),
+            new GuardianPersonalRobot("owner"),
+            new InspectorRobot()
+        );
+    }
 
     public void startFactory(String prompt) {
+        System.out.println("🏭 مصنع 7 روبوتات يبدأ: " + prompt);
         for(Robot robot : robots) {
             robot.execute(prompt);
-            // المشرف العام يفحص ويرجع العمل مع شرح إذا في غلط
+            // المشرف العام يفحص ويرجع العمل مع شرح
             if(robot instanceof SupervisorRobot) {
                 ((SupervisorRobot) robot).validatePreviousWork(robots);
             }
         }
     }
-    
-    public List<Robot> getRobots() { return robots; }
+
+    public List<Robot> getRobots() {
+        return robots;
+    }
 }
