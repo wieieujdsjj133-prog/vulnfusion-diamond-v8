@@ -1,48 +1,55 @@
-# 🛡️ VulnFusion Diamond v8.0 - النسخة الماسية 💎
-### مصنع 7 روبوتات ذكي - ذاتي الإصلاح - لا يطيع إلا مالكه - يمنع IDOR
+# Haya Security AI
 
-> ⚠️ للاستخدام التعليمي والمصرح به فقط - Educational & Authorized Testing Only
+منصة دفاعية متعددة الوكلاء لبناء التطبيقات وفحصها أمنيًا.
 
-## 🏭 مصنع 7 روبوتات - كيف يعمل؟
+## بنية النظام
 
-### 1. المبرمج 💻 `CoderRobot.java`
-يكتب الكود بسرعة 100x باستخدام OpenAI GPT-4o
+### مسار بناء التطبيق
+المستخدم → Agent 1 → Agent 2 → Agent 3 → Agent 4 → Agent 5 → Agent 6
 
-### 2. المدقق 🔍 `CheckerRobot.java`
-يفحص الجودة ويكتشف الأخطاء
+1. Code Generator
+2. Code Reviewer & Fixer
+3. Secure Code Auditor
+4. Readiness Verifier
+5. Builder
+6. QA / Browser Tester
 
-### 3. حارس الأمن 🛡️ `SecurityRobot.java`
-يفحص بـ **18 أداة** حقيقية:
-`Nuclei, OWASP ZAP, SQLMap, MobSF, Nikto, Nmap, Wapiti, XSStrike, SSRFmap, CRLF, Dalfox, Arjun, Gau, Subfinder, Httpx, Katana, Naabu, Nuclei-Templates`
-+ يصلح الثغرات بـ GPT-4o
-+ يمنع ثغرة IDOR الخطيرة (id=5 -> id=1)
+### مسار الفحص الأمني
+مدير الفحص → وكلاء الأدوات بالتتابع → Security Correlation → Remediation → Verification
 
-### 4. البناء 🏗️ `BuilderRobot.java`
-يبني موقع / APK جاهز
+كل وكيل أداة مستقل، يستقبل نتيجة المرحلة السابقة ويخرج نتيجة منظمة للمرحلة التالية.
 
-### 5. المشرف العام ⚖️ `SupervisorRobot.java`
-**الميزة الجديدة:** يفحص شغل 4 روبوتات قبله، واذا في غلط يرجع العمل مع شرح:
-> "يا مبرمج، عندك غلط في السطر 42 - أعد العمل"
+## أدوات مدعومة كـ adapters
 
-### 6. الحارس الشخصي 🛡️⚔️ `GuardianPersonalRobot.java`
-- **لا يطيع إلا أنت** - يفحص Owner ID (يمنع IDOR)
-- **14 يوم حماية متواصلة** - يفحص موقعك كل ساعة
-- **يصد كل الهجمات** في 0.2 ثانية: SQLi, XSS, DDoS, BruteForce
-- **يغلق الثغرة تلقائيا**
-- **محادثة خاصة** لا يراها إلا المالك
+Nmap, httpx, Nuclei, OWASP ZAP, Nikto, SSLyze, testssl.sh,
+Amass, Subfinder, Semgrep, SonarQube, Gitleaks, Trivy, MobSF,
+OpenVAS/Greenbone, Prowler, Kubeaudit, Playwright.
 
-### 7. المفتش المصلح 👁️🔧 `InspectorRobot.java`
-**الميزة الجديدة المطلوبة منك:**
-- يفحص هل كل روبوت قام بعمله؟
-- اذا وجد عطل يصلحه فورا: Restart + Reset Memory + Retraining
+النسخة المرفقة هي architecture/starter آمنة: adapters لا تشغّل أوامر هجومية تلقائيًا.
+أضف تنفيذ كل أداة فقط في بيئة تملكها أو لديك تصريح صريح لفحصها، مع Scope وAllowlist.
 
-## 🚀 التثبيت
-1. افتح المشروع في Android Studio
-2. ضع `google-services.json` في مجلد `app/`
-3. شغل التطبيق
+## التشغيل
 
-## 🔗 المستودع
-https://github.com/wieieujdsjj133-prog/vulnfusion-diamond-v8
+### Backend
 
-## 📜 ترخيص
-MIT - تعليمي فقط
+```bash
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8000
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+افتح منفذ 3000 في Codespaces.
+
+## ملاحظة أمنية
+
+المشروع مخصص للفحص الدفاعي المصرح به. لا تستخدمه لفحص أو اختبار أنظمة لا تملكها أو ليس لديك تصريح بفحصها.
